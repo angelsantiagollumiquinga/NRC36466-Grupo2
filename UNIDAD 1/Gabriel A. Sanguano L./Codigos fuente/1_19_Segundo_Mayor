@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int num, mayor = -1, segundo = -1, contador = 0;
+
+    printf("Ingrese un numero positivo (0 para terminar): ");
+    scanf("%d", &num);
+
+    while (num > 0) {
+        contador = contador + 1;
+        if (num > mayor) {
+            segundo = mayor;
+            mayor = num;
+        } else if (num > segundo && num != mayor) {
+            segundo = num;
+        }
+        printf("Ingrese un numero positivo (0 para terminar): ");
+        scanf("%d", &num);
+    }
+
+    if (contador < 2) {
+        printf("Error: hay menos de dos valores validos ingresados\n");
+    } else {
+        printf("Mayor: %d - Segundo Mayor: %d\n", mayor, segundo);
+    }
+
+    return 0;
+}
