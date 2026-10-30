@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int n, resto;
+    int binario[32];
+    int i = 0;
+
+    printf("Ingrese un entero positivo en base 10: ");
+    scanf("%d", &n);
+
+    if (n == 0) {
+        printf("Su representacion en binario es: 0\n");
+    } else {
+        while (n > 0) {
+            binario[i] = n % 2;
+            n = n / 2;
+            i++;
+        }
+
+        printf("Su representacion en binario es: ");
+        for (int j = i - 1; j >= 0; j--) {
+            printf("%d", binario[j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
