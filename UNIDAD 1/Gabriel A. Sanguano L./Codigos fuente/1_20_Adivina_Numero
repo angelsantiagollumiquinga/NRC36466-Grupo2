@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int secreto = 42;
+    int intento = 0;
+    int intentos = 0;
+
+    do {
+        printf("Adivina el numero (1 al 100): ");
+        scanf("%d", &intento);
+        intentos = intentos + 1;
+
+        if (intento > secreto) {
+            printf("mas bajo\n");
+        } else if (intento < secreto) {
+            printf("mas alto\n");
+        } else {
+            printf("Acertaste!\n");
+        }
+    } while (intento != secreto);
+
+    printf("numero total de intentos usados: %d\n", intentos);
+
+    return 0;
+}
