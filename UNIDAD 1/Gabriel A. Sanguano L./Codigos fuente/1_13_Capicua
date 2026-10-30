@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() {
+    int n, original, invertido = 0, resto;
+
+    printf("Ingrese un entero positivo: ");
+    scanf("%d", &n);
+
+    original = n;
+
+    while (n > 0) {
+        resto = n % 10;
+        invertido = (invertido * 10) + resto;
+        n = n / 10;
+    }
+
+    if (original == invertido) {
+        printf("%d es capicua\n", original);
+    } else {
+        printf("%d No es capicua\n", original);
+    }
+
+    return 0;
+}
