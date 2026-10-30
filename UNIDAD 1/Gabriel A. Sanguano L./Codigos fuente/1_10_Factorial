@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    long long factorial = 1;
+
+    printf("Ingrese un numero entero n>=0: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        factorial = factorial * i;
+    }
+
+    printf("El factorial es: %lld\n", factorial);
+
+    return 0;
+}
