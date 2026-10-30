@@ -1,0 +1,15 @@
+
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float x, resultado;
+
+    printf("Ingrese un numero x: ");
+    scanf("%f", &x);
+
+    resultado = pow(fabs(x), 3);
+    printf("el valor absoluto al cubo es: %f\n", resultado);
+
+    return 0;
+}
