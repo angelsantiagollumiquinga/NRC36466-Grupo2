@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int inicio, final, primo;
+
+    printf("Ingrese el limite inferior y superior: ");
+    scanf("%d %d", &inicio, &final);
+
+    for (int num = inicio; num <= final; num++) {
+        if (num > 1) {
+            primo = 1;
+            for (int divisor = 2; divisor <= num - 1; divisor++) {
+                if (num % divisor == 0) {
+                    primo = 0;
+                    break;
+                }
+            }
+            if (primo) {
+                printf("%d\n", num);
+            }
+        }
+    }
+
+    return 0;
+}
