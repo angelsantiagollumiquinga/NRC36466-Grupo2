@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    float altura, suma = 0.0, maxima = 0.0, minima = 0.0, media = 0.0;
+    int contador = 0;
+
+    printf("Ingrese una altura (negativa para terminar): ");
+    scanf("%f", &altura);
+
+    if (altura >= 0) {
+        maxima = altura;
+        minima = altura;
+
+        while (altura >= 0) {
+            suma = suma + altura;
+            contador = contador + 1;
+
+            if (altura > maxima) {
+                maxima = altura;
+            }
+            if (altura < minima) {
+                minima = altura;
+            }
+
+            printf("Ingrese otra altura (negativa para terminar): ");
+            scanf("%f", &altura);
+        }
+
+        media = suma / contador;
+        printf("---Resultados---\n");
+        printf("Altura maxima: %f\n", maxima);
+        printf("Altura minima: %f\n", minima);
+        printf("media de las alturas: %f\n", media);
+    } else {
+        printf("No se ingresaron alturas validas\n");
+    }
+
+    return 0;
+}
