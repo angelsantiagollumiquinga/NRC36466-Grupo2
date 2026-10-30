@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int x, z;
+
+    printf("Ingrese dos numeros enteros (xyz): ");
+    scanf("%d %d", &x, &z);
+
+    if (z == 0) {
+        printf("Error: El divisor debe ser diferente de 0\n");
+    } else if (x % z == 0) {
+        printf("%d es divisible por %d\n", x, z);
+    } else {
+        printf("%d No es divisible por %d\n", x, z);
+    }
+
+    return 0;
+}
