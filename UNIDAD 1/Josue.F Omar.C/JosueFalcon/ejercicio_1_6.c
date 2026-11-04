@@ -1,3 +1,4 @@
+Maximo,Minimo y Media de Alturas
 #include <stdio.h>
 
 int main() {
