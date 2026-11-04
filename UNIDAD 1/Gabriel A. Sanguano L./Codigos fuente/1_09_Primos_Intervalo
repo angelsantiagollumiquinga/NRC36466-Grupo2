@@ -1,3 +1,6 @@
+//ejercicio 1.9
+//Comprobaremos que numeros primos se encuentran entre dos valores escogidos por el usuario
+//realizado por Gabriel Sanguano
 #include <stdio.h>
 
 int main() {
@@ -6,20 +9,20 @@ int main() {
     printf("Ingrese el limite inferior y superior: ");
     scanf("%d %d", &inicio, &final);
 
-    for (int num = inicio; num <= final; num++) {
-        if (num > 1) {
+    for (int num = inicio; num <= final; num++) { //Bucle interno:intera la variable num desde el valor de inicio al valor final
+        if (num > 1) { //Filtra descartando los valores menores o iguales a 1
             primo = 1;
-            for (int divisor = 2; divisor <= num - 1; divisor++) {
-                if (num % divisor == 0) {
+            for (int divisor = 2; divisor <= num - 1; divisor++) { //Bucle interno: recorre los divisores entre num2 y -num1
+                if (num % divisor == 0) { //Evalua si la division num % divisor produce de residuo un 0
                     primo = 0;
-                    break;
-                }
-            }
-            if (primo) {
+                    break; //detiene la ejecución del bucle interno
+                } //Cierra el condicional interno
+            } // Cierra la estructura for repetitiva interna
+            if (primo) { //Evalua si la bandera primo se mantuvo en 1 tras probar divisiones
                 printf("%d\n", num);
-            }
-        }
-    }
+            } //cierra el condicional de impresión del número primo
+        } //Cierra el condicional de validacion num > 1
+    } //Cierra la estructura repetitiva for externa
 
     return 0;
 }
