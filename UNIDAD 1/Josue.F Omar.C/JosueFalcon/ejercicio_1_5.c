@@ -1,3 +1,4 @@
+    Consersion de segundos 
 #include <stdio.h>
 
 int main() {
