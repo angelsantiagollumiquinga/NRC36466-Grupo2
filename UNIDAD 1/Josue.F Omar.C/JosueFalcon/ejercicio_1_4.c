@@ -1,3 +1,4 @@
+Pertenencia e intervalo 
 #include <stdio.h>
 
 int main() {
