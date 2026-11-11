@@ -7,9 +7,9 @@ void main()
 {
     /*
         *
-        * *
-        * * *
-        * * * *
+       * *
+     * * * *
+    * * * * *
     */
     int i,j,n;
     do
@@ -19,7 +19,11 @@ void main()
     } while (n<=0);
     for(i=1;i<=n;i++) //filas
     {
-        for(j=1;j<=i;j++) //columnas
+        for(j=1;j<=n-i;j++)//columnas
+        {
+            printf(" ");
+        }
+        for(j=1;j<=i;j++)
             printf("* ");
         printf("\n");
 
