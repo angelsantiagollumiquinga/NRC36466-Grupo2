@@ -1,0 +1,78 @@
+#define __USE_MINGW_ANSI_STDIO 1
+#include <stdio.h>
+
+int main() {
+    int opcion;
+
+    do {
+        printf("\n=== MENU DE OPCIONES ===\n");
+        printf("1. Generar Figura\n");
+        printf("2. Calcular factorial\n");
+        printf("3. Salir\n");
+        printf("Elige una opcion: ");
+        scanf("%d", &opcion);
+
+        switch(opcion) {
+            case 1: {
+                int lineas;
+                printf("\nIngresa el numero de lineas del triangulo: ");
+                scanf("%d", &lineas);
+
+                if (lineas <= 0) {
+                    printf("Por favor, ingresa un numero mayor a 0.\n");
+                } else {
+                    printf("\n");
+                    for (int i = 1; i <= lineas; i++) {
+                        for (int j = 1; j <= i; j++) {
+                            if (j == 1 || j == i || i == lineas) {
+                                printf("* ");
+                            } else {
+                                printf("  ");
+                            }
+                        }
+                        printf("\n");
+                    }
+                }
+                break;
+            }
+
+            case 2: {
+                int num;
+                long double factorial = 1.0L;
+
+                printf("\nIngresa un numero entero positivo (0 - 1754): ");
+                scanf("%d", &num);
+
+                if (num < 0) {
+                    printf("Error: El factorial no esta definido para numeros negativos.\n");
+                } else if (num > 1754) {
+                    printf("Error: El numero excede el limite de long double (infinito).\n");
+                } else {
+                    for (int i = 1; i <= num; i++) {
+                        factorial *= i;
+                    }
+
+                    // Si es menor o igual a 20, lo mostramos sin decimales para mayor claridad
+                    if (num <= 20) {
+                        printf("El factorial de %d es: %.0Lf\n", num, factorial);
+                    } else {
+                        // Para numeros grandes usamos notacion cientifica (%Le)
+                        printf("El factorial de %d es: %.6Le\n", num, factorial);
+                    }
+                }
+                break;
+            }
+
+            case 3:
+                printf("\nSaliendo del programa. ¡Hasta luego!\n");
+                break;
+
+            default:
+                printf("\nOpcion no valida. Intenta de nuevo.\n");
+                break;
+        }
+
+    } while (opcion != 3);
+
+    return 0;
+}
