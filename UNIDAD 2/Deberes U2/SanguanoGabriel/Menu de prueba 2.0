@@ -1,0 +1,93 @@
+// Gabriel Sanguano - 13/11/2026 - Menu de prueba 1
+
+#define __USE_MINGW_ANSI_STDIO 1
+#include <stdio.h>
+
+// Constantes definidas en lugar de "números mágicos"
+#define MAX_FACTORIAL 1754
+#define UMBRAL_CIENTIFICA 20
+
+int main(void) { // Se especifica (void) por estándar estricto de C
+    int opcion = 0; // Inicialización de variables para evitar valores basura
+
+    do {
+        printf("\n=== MENU DE OPCIONES ===\n");
+        printf("1. Generar Figura\n");
+        printf("2. Calcular factorial\n");
+        printf("3. Salir\n");
+        printf("Elige una opcion: ");
+
+        // Validación de entrada para evitar bucle infinito si ingresan letras
+        if (scanf("%d", &opcion) != 1) {
+            while (getchar() != '\n'); // Limpia el búfer de entrada
+            opcion = 0;                // Fuerza a entrar en el caso default
+        }
+
+        switch (opcion) { // Abre el menu de opciones para seleccionar el caso requerido
+            case 1: {
+                int lineas = 0;
+                printf("\nIngresa el numero de lineas del triangulo: ");
+
+                if (scanf("%d", &lineas) != 1) {
+                    while (getchar() != '\n');
+                    printf("Error: Debes ingresar un numero entero.\n");
+                } else if (lineas <= 0) {
+                    printf("Por favor, ingresa un numero mayor a 0.\n");
+                } else {
+                    printf("\n");
+                    for (int i = 1; i <= lineas; i++) {
+                        for (int j = 1; j <= i; j++) {
+                            if (j == 1 || j == i || i == lineas) {
+                                printf("* ");
+                            } else {
+                                printf("  ");
+                            }
+                        }
+                        printf("\n");
+                    }
+                }
+                break; // Detiene el caso 1 para evitar que se repita
+            }
+
+            case 2: {
+                int num = 0;
+                long double factorial = 1.0L; // El long ayuda a que el rango del factorial aumente
+
+                printf("\nIngresa un numero entero positivo (0 - %d): ", MAX_FACTORIAL);
+
+                if (scanf("%d", &num) != 1) {
+                    while (getchar() != '\n');
+                    printf("Error: Debes ingresar un numero entero.\n");
+                } else if (num < 0) {
+                    printf("Error: El factorial no esta definido para numeros negativos.\n");
+                } else if (num > MAX_FACTORIAL) {
+                    printf("Error: El numero excede el limite de long double (infinito).\n");
+                } else {
+                    for (int i = 2; i <= num; i++) { // Inicia en 2 (multiplicar por 1 no altera el resultado)
+                        factorial *= i;
+                    }
+
+                    // Si es menor o igual al umbral, lo mostramos sin decimales para mayor claridad
+                    if (num <= UMBRAL_CIENTIFICA) {
+                        printf("El factorial de %d es: %.0Lf\n", num, factorial);
+                    } else {
+                        // Para numeros grandes usamos notacion cientifica (%Le)
+                        printf("El factorial de %d es: %.6Le\n", num, factorial);
+                    }
+                }
+                break;
+            }
+
+            case 3:
+                printf("\nSaliendo del programa. ¡Hasta luego!\n");
+                break;
+
+            default:
+                printf("\nOpcion no valida. Intenta de nuevo.\n");
+                break;
+        }
+
+    } while (opcion != 3);
+
+    return 0;
+}
