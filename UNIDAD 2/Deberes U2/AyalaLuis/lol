@@ -1,0 +1,90 @@
+//Menu 3 - Validar Fecha y Salir (Sin Funciones)
+//Programa con menu switch que valida fechas entre 1900 y 2015 incluyendo anios bisiestos.
+//Realizado por Ayala Luis
+#include <stdio.h>   // Libreria estandar de entrada y salida
+#include <stdlib.h>  // Libreria para limpiar pantalla con system("cls")
+#include <conio.h>   // Libreria para pausar consola con getch()
+#include <windows.h> // Libreria para pausas con Sleep()
+
+int main() {
+    int opcion;
+    int anio, mes, dia, maxDias;
+
+    do {
+        system("cls"); // Limpia la pantalla en cada regreso al menu
+        printf("MENU 3\n");
+        printf("1. Validar fecha\n");
+        printf("2. Salir\n");
+        printf("Ingrese opcion: ");
+        scanf("%d", &opcion);
+
+        switch (opcion) {
+            case 1:
+                // 1. Validar anio en el rango 1900 - 2015
+                do {
+                    printf("Ingrese el anio (1900-2015): ");
+                    scanf("%d", &anio);
+                } while (anio < 1900 || anio > 2015);
+
+                // 2. Validar mes en el rango 1 - 12
+                do {
+                    printf("Ingrese el mes (1-12): ");
+                    scanf("%d", &mes);
+                } while (mes < 1 || mes > 12);
+
+                // 3. Calcular el maximo de dias del mes (incluye anio bisiesto)
+                if (mes == 2) {
+                    if ((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0)) {
+                        maxDias = 29;
+                    } else {
+                        maxDias = 28;
+                    }
+                } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                    maxDias = 30;
+                } else {
+                    maxDias = 31;
+                }
+
+                // 4. Validar dia segun el mes y anio ingresados
+                do {
+                    printf("Ingrese el dia (1-31): ");
+                    scanf("%d", &dia);
+                } while (dia < 1 || dia > maxDias);
+
+                // 5. Imprimir la fecha valida con el nombre del mes
+                printf("Fecha valida: %d de ", dia);
+                switch (mes) {
+                    case 1:  printf("Enero"); break;
+                    case 2:  printf("Febrero"); break;
+                    case 3:  printf("Marzo"); break;
+                    case 4:  printf("Abril"); break;
+                    case 5:  printf("Mayo"); break;
+                    case 6:  printf("Junio"); break;
+                    case 7:  printf("Julio"); break;
+                    case 8:  printf("Agosto"); break;
+                    case 9:  printf("Septiembre"); break;
+                    case 10: printf("Octubre"); break;
+                    case 11: printf("Noviembre"); break;
+                    case 12: printf("Diciembre"); break;
+                }
+                printf(" de %d\n", anio);
+
+                printf("Presione una tecla para continuar");
+                getch(); // Pausa la pantalla hasta presionar una tecla
+                break;
+
+            case 2:
+                printf("\nSaliendo del programa...\n");
+                Sleep(1000); // Pausa de 1 segundo antes de cerrar
+                break;
+
+            default:
+                printf("\nOpcion invalida. Presione una tecla para continuar");
+                getch();
+                break;
+        }
+
+    } while (opcion != 2); // Repite mientras no se elija salir
+
+    return 0; // Fin del programa
+}
